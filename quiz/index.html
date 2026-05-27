@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechZ Coding Quiz - Test Your Skills</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="tech">TEST</span> YOUR <span class="easy">SKILLS</span>
+            </div>
+            <div class="tagline">⚡ Master Your Coding Skills</div>
+        </header>
+
+        <!-- Home Screen -->
+        <div class="home-screen active">
+            <h1 style="text-align: center; margin-bottom: 0px;">Choose Your Challenge</h1>
+            <p style="text-align: center; color: #00d4ff; margin-bottom: 30px;">Select a topic and test your knowledge
+                with 100 questions!</p>
+            <div class="topic-grid">
+                <div class="topic-card" onclick="startQuiz('html')">
+                    <div class="topic-icon">📄</div>
+                    <div class="topic-name">HTML</div>
+                    <div class="topic-count">100 Questions</div>
+                </div>
+                <div class="topic-card" onclick="startQuiz('css')">
+                    <div class="topic-icon">🎨</div>
+                    <div class="topic-name">CSS</div>
+                    <div class="topic-count">100 Questions</div>
+                </div>
+                <div class="topic-card" onclick="startQuiz('javascript')">
+                    <div class="topic-icon">⚡</div>
+                    <div class="topic-name">JavaScript</div>
+                    <div class="topic-count">100 Questions</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div class="quiz-screen">
+            <div class="quiz-header">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+                <div class="timer" id="timer">10s</div>
+            </div>
+
+            <div class="question-container">
+                <div class="question-number" id="questionNumber"></div>
+                <div class="question-text" id="questionText"></div>
+                <div id="codeBlock"></div>
+                <div class="options" id="optionsContainer"></div>
+                <div class="explanation" id="explanation">
+                    <div class="explanation-title">✓ Correct Answer</div>
+                    <div id="explanationText"></div>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn" id="nextBtn" onclick="nextQuestion()" style="display: none;">Next Question
+                    →</button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div class="result-screen">
+            <div class="result-summary">
+                <h1>Quiz Complete! 🎉</h1>
+                <div class="score-circle" id="scoreCircle"></div>
+                <h2 id="resultMessage"></h2>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="correctCount"></div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="wrongCount"></div>
+                    <div class="stat-label">Wrong</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="accuracyPercent"></div>
+                    <div class="stat-label">Accuracy</div>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn" onclick="goHome()">← Back to Home</button>
+                <button class="btn btn-secondary" onclick="retryQuiz()">Retry Quiz 🔄</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
