@@ -2,7 +2,7 @@
     font-family: 'horro';
     src: url(./Another\ Danger\ -\ Demo.otf);
 }
-
+ 
 * {
     padding: 0;
     margin: 0;
@@ -18,23 +18,3 @@ body {
     background: black;
 }
 
-#car1 {
-    width: 100px;
-    height: 50px;
-    background: red;
-}
-
-#car2 {
-    width: 100px;
-    height: 50px;
-    background: blue;
-    position: absolute;
-
-}
-
-#car3 {
-    width: 100px;
-    height: 50px;
-    background: green;
-
-}
