@@ -15,28 +15,37 @@ body{
 main{
     padding: 10px;
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 60px 300px 300px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 60px 300px 150px 150px;
     grid-gap: 5px;
 
-    grid-template-areas: "header header"
-                         "aside section"
-                         "figure figure";
+    grid-template-areas: "header header header"
+                         "section section section"
+                         "leftt up rightt"
+                         "leftt down rightt";
 }
 
 header{
     grid-area: header;
     background-color: darkblue;
 }
-aside{
-    grid-area: aside;
-    background-color: darkgreen;
-}
 section{
     grid-area: section;
     background-color: darkred;
 }
-figure{
-    grid-area: figure;
+.div-left{
+    grid-area: leftt;
+    background-color: yellow;
+}
+.bottom-up{
+    grid-area: up;
+    background-color: aqua;
+}
+.bottom-down{
+    grid-area: down;
+    background-color: aqua;
+}
+.div-right{
+    grid-area: rightt;
     background-color: darkorchid;
 }
