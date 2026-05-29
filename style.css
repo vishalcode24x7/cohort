@@ -12,11 +12,31 @@ body {
 body{
     background-color: black;
 }
+main{
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 60px 300px 300px;
+    grid-gap: 5px;
 
-h1{
-    color: transparent;
-    font-size: 145px;
-    background: url('https://i.pinimg.com/originals/49/11/9d/49119df8c1cc449da4df00c5b271998c.gif');
-    background-size: cover;
-    background-clip: text;
+    grid-template-areas: "header header"
+                         "aside section"
+                         "figure figure";
+}
+
+header{
+    grid-area: header;
+    background-color: darkblue;
+}
+aside{
+    grid-area: aside;
+    background-color: darkgreen;
+}
+section{
+    grid-area: section;
+    background-color: darkred;
+}
+figure{
+    grid-area: figure;
+    background-color: darkorchid;
 }
