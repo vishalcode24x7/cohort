@@ -15,37 +15,43 @@ body{
 main{
     padding: 10px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 60px 300px 150px 150px;
+    grid-template-columns: 470px 470px 470px;
+    grid-template-rows: 230px 230px 230px;
     grid-gap: 5px;
 
-    grid-template-areas: "header header header"
-                         "section section section"
-                         "leftt up rightt"
-                         "leftt down rightt";
+    grid-template-areas: "div1 div2 div4"
+                         "div1 div3 div6"
+                         "div5 div5 div6"
+                         ;
 }
 
-header{
-    grid-area: header;
-    background-color: darkblue;
+.child1{
+    border-radius: 10px;
+    grid-area: div1;
+    background-color: brown;
 }
-section{
-    grid-area: section;
-    background-color: darkred;
+.child2{
+    border-radius: 10px;
+    grid-area: div2;
+    background-color: violet;
 }
-.div-left{
-    grid-area: leftt;
+.child3{
+    border-radius: 10px;
+    grid-area: div3;
+    background-color: aqua;
+}
+.child4{
+    border-radius: 10px;
+    grid-area: div4;
     background-color: yellow;
 }
-.bottom-up{
-    grid-area: up;
-    background-color: aqua;
+.child5{
+    border-radius: 10px;
+    grid-area: div5;
+    background-color: green;
 }
-.bottom-down{
-    grid-area: down;
-    background-color: aqua;
-}
-.div-right{
-    grid-area: rightt;
-    background-color: darkorchid;
+.child6{
+    border-radius: 10px;
+    grid-area: div6;
+    background-color: red;
 }
