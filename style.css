@@ -8,42 +8,45 @@ html,
 body {
   height: 100%;
   width: 100%;
+  font-size: 40px;
 }
 
 main {
   height: 100%;
   width: 100%;
+  background-color: rgb(39, 38, 38);
   display: flex;
-  gap: 20px;
-  background-color: black;
-  padding: 40px;
+  gap: 10px;
 }
-main section {
-  height: 90%;
-  flex-grow: 1;
-  background-color: darkred;
-  border-radius: 10px;
-  background-size: cover;
-  background-position: center;
-  transition: all 0.7s linear;
-  cursor: pointer;
-  border: 5px solid white;
+main .box1 {
+  height: 100px;
+  width: 100px;
+  background-color: rgb(215, 29, 29);
 }
-main section:hover {
-  flex-grow: 2;
+main .box2 {
+  height: 10vh;
+  width: 10vw;
+  background-color: aqua;
 }
-main section:nth-child(1) {
-  background-image: url(https://images.unsplash.com/photo-1635805737707-575885ab0820?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+main .box3 {
+  height: 5rem;
+  width: 4rem;
+  background-color: violet;
 }
-main section:nth-child(2) {
-  background-image: url(https://assets.hongkiat.com/uploads/marvel-wallpapers/mobile/preview/marvel-mobile-wallpaper-36.jpg);
+main .box4 {
+  height: 5em;
+  width: 5em;
+  background-color: yellow;
 }
-main section:nth-child(3) {
-  background-image: url(https://4kwallpapers.com/images/wallpapers/iron-man-marvel-superheroes-amoled-pitch-black-minimal-art-2160x3840-6293.png);
+main .box5 {
+  height: 15%;
+  width: 15%;
+  background-color: blue;
 }
-main section:nth-child(4) {
-  background-image: url(https://wallpapers.com/images/featured/captain-america-iphone-qjse265f4lfgxifz.jpg);
+main .text {
+  font-size: 40px;
+  color: white;
 }
-main section:nth-child(5) {
-  background-image: url(https://wallpapercat.com/w/full/8/6/2/2164323-1920x2400-iphone-hd-incredible-hulk-wallpaper-image.jpg);
+main .text h1 {
+  font-size: clamp(14px, 1vw, 18px);
 }/*# sourceMappingURL=style.css.map */
