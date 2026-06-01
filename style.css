@@ -8,45 +8,94 @@ html,
 body {
   height: 100%;
   width: 100%;
-  font-size: 40px;
+}
+
+html {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: white;
+  font-size: calmp(14px, 1vw, 18px);
+}
+
+body {
+  background-color: rgb(29, 28, 28);
+}
+
+section {
+  max-width: 1600px;
 }
 
 main {
-  height: 100%;
   width: 100%;
-  background-color: rgb(39, 38, 38);
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 0rem;
+  align-items: center;
 }
-main .box1 {
-  height: 100px;
-  width: 100px;
-  background-color: rgb(215, 29, 29);
+main section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
 }
-main .box2 {
-  height: 10vh;
-  width: 10vw;
-  background-color: aqua;
+main section .top {
+  width: 100%;
 }
-main .box3 {
-  height: 5rem;
-  width: 4rem;
-  background-color: violet;
+main section .top img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
 }
-main .box4 {
-  height: 5em;
-  width: 5em;
-  background-color: yellow;
+main section .bottom {
+  background-color: rgb(55, 55, 55);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 1.5rem;
 }
-main .box5 {
-  height: 15%;
-  width: 15%;
-  background-color: blue;
+main section .bottom .text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
-main .text {
-  font-size: 40px;
-  color: white;
+main section .bottom .text h3 {
+  font-weight: 300;
+  font-size: 2.5rem;
+  text-transform: uppercase;
 }
-main .text h1 {
-  font-size: clamp(14px, 1vw, 18px);
+main section .bottom .text p {
+  font-weight: 300;
+  opacity: 0.8;
+  line-height: 1.7;
+  font-size: 1.2rem;
+  color: rgb(136, 134, 134);
+}
+main section .bottom .text button {
+  width: -moz-fit-content;
+  width: fit-content;
+  border: none;
+  outline: none;
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+}
+
+@media (min-width: 900px) {
+  main section {
+    flex-direction: row;
+  }
+  main section .top,
+  main section .bottom {
+    width: 50%;
+  }
+  main section .top img {
+    height: 80vh;
+  }
+  main section .bottom {
+    justify-content: space-between;
+    padding: 3rem;
+  }
 }/*# sourceMappingURL=style.css.map */
