@@ -35,7 +35,7 @@ main {
   @include flex_column(0rem);
   align-items: center;
 
-  section {
+  section.view1 {
     width: 100%;
     @include flex_column(2rem);
     padding: 1rem;
@@ -86,13 +86,39 @@ main {
       }
     }
   }
+
+  section.view2{
+    @include flex_column(1rem);
+    width: 100%;
+    padding: 1rem;
+
+    .top,.bottom{
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+
+      .element{
+        text-align: center;
+        @include flex_column(0.3rem);
+
+        small{
+          opacity: 0.6 ;
+        }
+
+        h2{
+          font-size: 3rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
 }
 
 @media (min-width:900px) {
   main {
     // background-color: red;
 
-    section {
+    section.view1 {
       flex-direction: row;
 
       .top,
@@ -110,6 +136,11 @@ main {
         justify-content: space-between;
         padding: 3rem;
       }
+    }
+
+    section.view2{
+      flex-direction: row;
+      padding: 1rem;
     }
   }
 
