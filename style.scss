@@ -54,7 +54,7 @@ main {
 
     .bottom {
       background-color: rgb(55, 55, 55);
-      border-radius: 10px;
+      border-radius: 0.7rem;
       @include flex_column(3rem);
       padding: 1.5rem;
 
@@ -112,6 +112,101 @@ main {
       }
     }
   }
+
+  section.view3{
+    @include flex_column(0.7rem);
+    width: 100%;
+    padding: 1rem;
+
+    .top{
+      width: 100%;
+
+      img{
+        width: 100%;
+        border-radius: 0.7rem;
+      }
+    }
+
+    .bottom {
+      background-color: rgb(55, 55, 55);
+      border-radius: 0.7rem;
+      @include flex_column(3rem);
+      padding: 1.5rem;
+
+        h2{
+          font-weight: 300;
+          text-transform: uppercase;
+        }
+
+      .text {
+        @include flex_column(1rem);
+
+        p {
+          font-weight: 300;
+          opacity: 0.8;
+          line-height: 1.7;
+          font-size: 1.2rem;
+          color: rgb(136, 134, 134);
+        }
+
+        // button {
+        //   width: fit-content;
+        //   border: none;
+        //   outline: none;
+        //   padding: 0.7rem 1rem;
+        //   border-radius: 0.5rem;
+        // }
+      }
+    }
+  }
+
+  section.view4{
+    @include flex_column(2rem);
+    padding: 1rem;
+    width: 100%;
+
+    .card{
+      width: 100%;
+      background-image: url(https://images.unsplash.com/photo-1457551859869-d4b7ab27184c?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGhvdG9zaG9vdHxlbnwwfHwwfHx8MA%3D%3D);
+      background-size: cover;
+      aspect-ratio: 1/1;
+      padding: 1rem;
+      border-radius: 0.7rem;
+
+      @include flex_column(0rem);
+      justify-content: space-between;
+      padding: 1rem;
+
+      .icon,.bottom{
+        background-color: rgba(186, 186, 186, 0.474);
+        backdrop-filter: blur(10px);
+        border: 1px solid white;
+        border-radius: 0.7rem;
+        padding: 0.5rem;
+      }
+
+      .top{
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-end;
+      }
+      
+      .icon{
+        width: fit-content;
+        border-radius: 50%;
+      }
+
+      .bottom{
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem 1rem;
+
+        p{
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
 }
 
 @media (min-width:900px) {
@@ -142,6 +237,29 @@ main {
       flex-direction: row;
       padding: 1rem;
     }
-  }
 
+    section.view3{
+      flex-direction: row-reverse;
+
+      .top,.bottom{
+        width: 50%;
+      }
+      .bottom{
+        justify-content: space-between;
+
+        .paragraph{
+          display: flex;
+          gap: 2rem;
+
+          p{
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+
+    section.view4{
+      flex-direction: row;
+    }
+  }
 }
