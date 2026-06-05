@@ -18,10 +18,10 @@
 // console.time("loopTime");
 
 
-console.group("user info")
-console.log("Name: vishal")
-console.log("course: js")
-console.groupEnd();
+// console.group("user info")
+// console.log("Name: vishal")
+// console.log("course: js")
+// console.groupEnd();
 
 //data types
 // float
@@ -35,3 +35,12 @@ console.groupEnd();
 // Symbol
 // Object
 // NaN
+
+// reference - array objects function
+// primitives - Number Boolean String null undefined NaN Infinity Symbol BigInt
+
+// {
+//   var a = 5;
+// }
+
+// console.log(a)
