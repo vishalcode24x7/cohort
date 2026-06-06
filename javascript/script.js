@@ -44,3 +44,19 @@
 // }
 
 // console.log(a)
+
+// [Operators]
+
+// arithmetic Operators
+// assignment Operators
+// comparison Operators
+// logical Operatorsn 
+// condition (Ternary) Operator
+// Type Checing Operators
+// String Operator
+// Spread / Rest Operator
+// Nullish Coalescing Operator
+// optional Operator
+ 
+
+// [variable hoisting]
