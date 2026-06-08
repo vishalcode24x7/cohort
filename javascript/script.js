@@ -16,12 +16,21 @@ for(let i=1; i<=5; i++){
    console.log("yes")
 }
 
-let num = prompt("Enter number");
+let age = prompt("Enter number");
 if (age === null){
    console.error("You Cancelled")
 }
 else{
    if(age.trim() === ""){
-      console.error
+      console.error("bhai dhang ka likh le")
+   }
+   else{
+      age = Number(age.trim());
+      if(isNaN(age)){
+         console.error("write some correct write no.")
+      }
+      else{
+         console.log("confirm ye number hai")
+      }
    }
 }
