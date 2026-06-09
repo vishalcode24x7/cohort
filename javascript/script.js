@@ -82,9 +82,44 @@
 //    attampt++;
 // }
 
-let correct = "vishal"
-let pass = prompt("Enter your password")
+// let correct = "vishal"
+// let pass = prompt("Enter your password")
 
-while(correct !== pass){
-   pass = prompt("Enter your password")
+// while(correct !== pass){
+//    pass = prompt("Enter your password")
+// }
+
+// let counter = 0;
+// for(let i = 1; i<21; i++){
+//    if(counter === 3) break;
+//    if(i%2 !== 0){
+//       console.log(i)
+//       counter++;
+//    }
+// }
+
+// let counter = 0
+// for(let i = 1; i<6; i++){
+//    let num = +prompt("Enter no.")
+//    if(num >= 0) counter++;
+// }
+// console.log(counter);
+
+let balance = 1000;
+let counter = 0;
+let flag = false
+while(balance>0 && counter !== 3){
+   let withdraw = +prompt("withdraw amount")
+   counter++;
+   if(withdraw<=balance){
+      balance -= withdraw;
+   }else {
+      flag = true;
+      break;
+   }
 }
+
+if(flag === true){
+   console.log("insufficient amount")
+}
+console.log(`Balance :- ${balance}`)
