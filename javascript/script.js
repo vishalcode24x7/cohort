@@ -1,41 +1,89 @@
-// function addunl(...nums) {
-//    let ans = nums.reduce(function(acc, val){
-//       return acc + val;
-//    }, 0);
-//    console.log(ans)
-   
+//Q1
+// function runtwice(fn){
+//    fn()
+//    fn()
 // }
-// addunl(1, 2, 3, 4, 5)
+// runtwice(function(){
+//    console.log("hello")
+// })
 
-(function(){
-   console.log("i run instantly!")
-}) 
+//Q2
+// function pure(a,b){
+//    console.log(a+b);
+// }
+// pure(2,3)
 
-function parent(){
-   let a = 12;
-   function child(){
-      console.log(a);
-   }
-}
+// let global = 0
+// function impure(a,b){
+//    global++;
+//    console.log(global);
+// }
 
-let arr = ["apple","guava","grapes","mango","banana"];
-arr.push("pear");
-arr.unshift("orange");
+//Q3 object distructuring
+// function abcd({name, age}){
+//    console.log(name , age)
+// }
+// abcd({name:"vishal", class:"BCA"})
 
-for(let i = 0; i<arr.length; i++){
-   console.log(arr[i])
-}
-
-let obg = {
-   name: "vishal",
-   age:19,
-   city:"chandigarh"
-};
-for(let key in obg){
-   console.log(obg[key])
-}
+//Q4
+// let obj = {
+//    name:"vishal",
+//    fnc: function(){
+//       console.log(this)
+//    },
+//    fnc2: ()=>{
+//       console.log(this)
+//    }
+// }
 
 
-setTimeout(function(){
-   console.log("time up")
-},2000)
+//Q5
+// let arr = [1,2,3,4,5];
+// let newarr = arr.map(function(val){
+//    return val * val;
+// })
+// console.log(newarr);
+
+//Q6
+// let arr = [1,2,3,4,5,6,7,8,9]
+// let even = arr.filter(function(val){
+//    return val%2 === 0;
+// })
+// console.log(val);
+
+//Q7
+// let salary = [1000, 2000, 3000];
+// let ans = salary.reduce(function(acc, val){
+//    return acc+val;
+// },0)
+// console.log(ans)
+
+//Q8
+// let names = ["raj", "vishal", "ravi"];
+// let ans = names.some(function(val){
+//    return val.length >3;
+// })
+// let names = ["raj", "vishal", "ravi"];
+// let ans = names.every(function(val){
+//    return val.length >3;
+// })
+
+// Q9
+// let user = {
+//    name:"vishal",
+//    age: 18,
+//    email : "sl@lkjd"
+// }
+// Object.freeze(user);
+
+// Q10
+// let obj = {
+//    user : {
+//       name: "vishal",
+//       address: {
+//          city:"chd",
+//       },
+//    },
+// };
+
+// let {city} = obj.user.address;
