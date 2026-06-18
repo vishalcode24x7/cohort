@@ -1,6 +1,7 @@
 const reels = [
     {
         username: "travelwithanaya",
+        isMuted: true,
         likeCount: 12450,
         isLiked: true,
         commentCount: 342,
@@ -12,6 +13,7 @@ const reels = [
     },
     {
         username: "fitraj",
+        isMuted: true,
         likeCount: 9870,
         isLiked: false,
         commentCount: 214,
@@ -23,6 +25,7 @@ const reels = [
     },
     {
         username: "foodie_sneha",
+        isMuted: true,
         likeCount: 18420,
         isLiked: true,
         commentCount: 521,
@@ -34,6 +37,7 @@ const reels = [
     },
     {
         username: "techwitharjun",
+        isMuted: true,
         likeCount: 7650,
         isLiked: false,
         commentCount: 108,
@@ -45,6 +49,7 @@ const reels = [
     },
     {
         username: "naturelens",
+        isMuted: true,
         likeCount: 25670,
         isLiked: true,
         commentCount: 801,
@@ -56,6 +61,7 @@ const reels = [
     },
     {
         username: "dancewithme",
+        isMuted: true,
         likeCount: 14320,
         isLiked: false,
         commentCount: 376,
@@ -67,6 +73,7 @@ const reels = [
     },
     {
         username: "gaminghub",
+        isMuted: true,
         likeCount: 21980,
         isLiked: true,
         commentCount: 645,
@@ -78,6 +85,7 @@ const reels = [
     },
     {
         username: "dailyquotes",
+        isMuted: true,
         likeCount: 6320,
         isLiked: false,
         commentCount: 89,
@@ -89,17 +97,19 @@ const reels = [
     },
     {
         username: "carsandcoffee",
+        isMuted: true,
         likeCount: 17250,
         isLiked: true,
         commentCount: 482,
         video: "https://videos.pexels.com/video-files/855457/855457-uhd_2560_1440_30fps.mp4",
         userProfile: "https://randomuser.me/api/portraits/men/55.jpg",
         shareCount: 321,
-        isFollowed:"Unfollow",
+        isFollowed: "Unfollow",
         caption: "Dream car spotted today 🏎️"
     },
     {
         username: "petworld",
+        isMuted: true,
         likeCount: 29840,
         isLiked: false,
         commentCount: 934,
@@ -111,23 +121,32 @@ const reels = [
     }
 ];
 
-var sum = '';
-reels.forEach(function (elem) {
-    sum = sum + `<div class="reel">
-                    <video class="main-img" autoplay loop muted
+let allReels = document.querySelector('.all-reels')
+
+
+let isMuted = true
+
+function addData() {
+    var sum = '';
+    reels.forEach(function (elem, idx) {
+        sum = sum + `<div class="reel">
+                    <video class="main-img" autoplay loop ${elem.isMuted ? 'muted' : ''}
                         src="${elem.video}"></video>
+                     <div id=${idx} class="mute">
+                          ${elem.isMuted ? '<i class="ri-volume-mute-fill"></i>' : '<i class="ri-volume-up-fill"></i>'}
+                     </div>
                     <div class="bottom">
                         <div class="user">
                             <img src="${elem.userProfile}"
                                 alt="">
                             <h4>${elem.username}</h4>
-                            <button>${elem.isFollowed}</button>
+                            <button id=${idx} class='follow'>${elem.isFollowed}</button>
                         </div>
                         <h3>${elem.caption}</h3>
                     </div>
                     <div class="right">
-                        <div class="like">
-                            <h4 class="like-icon">${elem.isLiked?'<i class="love ri-heart-fill"></i>':'<i class="ri-poker-hearts-line"></i>'}</h4>
+                        <div id=${idx} class="like">
+                            <h4 class="like-icon">${elem.isLiked ? '<i class="love ri-heart-fill"></i>' : '<i class="ri-poker-hearts-line"></i>'}</h4>
                             <h6>${elem.likeCount}</h6>
                         </div>
                         <div class="comment">
@@ -143,7 +162,51 @@ reels.forEach(function (elem) {
                         </div>
                     </div>
                 </div>`
-})
+    })
 
-let allReels = document.querySelector('.all-reels')
-allReels.innerHTML = sum
+    allReels.innerHTML = sum
+
+}
+
+addData();
+
+allReels.addEventListener("click", function (dets) {
+    if (dets.target.className == 'like') {
+        if (!reels[dets.target.id].isLiked) {
+            reels[dets.target.id].likeCount++;
+            reels[dets.target.id].isLiked = true;
+        }
+        else {
+            reels[dets.target.id].likeCount--;
+            reels[dets.target.id].isLiked = false;
+        }
+        addData();
+    }
+    if (dets.target.className == 'follow') {
+        if (reels[dets.target.id].isFollowed == 'Follow') {
+            // console.log("unFollow hua")
+            reels[dets.target.id].isFollowed = 'Unfollow'
+        }
+        else {
+            // console.log("follow hua")
+            reels[dets.target.id].isFollowed = 'Follow'
+        }
+        addData();
+    }
+
+    if (dets.target.className == 'mute') {
+        if (!reels[dets.target.id].isMuted) {
+            console.log("mute");
+            
+            reels[dets.target.id].isMuted = true;
+        }
+        else {
+            console.log("unmute");
+            
+            reels[dets.target.id].isMuted = false;
+
+        }
+        addData();
+    }
+
+})
