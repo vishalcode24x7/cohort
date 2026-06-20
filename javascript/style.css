@@ -10,18 +10,27 @@ html,body {
     background-color: black;
 }
 
-:root{
-    --x: 400px;
-    --y: 400px;
+html{
+    font-weight: 600;
+    font-family: monospace;
 }
 
 body{
-    background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
 }
 
-.box{
-    height: 100%;
-    width: 100%;
-    background: radial-gradient(150px at var(--x) var(--y), rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.84));
+p{
+    color: rgb(6, 214, 6);
+    font-size: 2rem;
+    width: 500px;
+    display: inline-block;
+    text-align: center;
 }
