@@ -1,232 +1,74 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-
 html,
 body {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
-html {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  color: white;
-  font-size: calmp(14px, 1vw, 18px);
+html{
+    font-family: monospace;
 }
 
-body {
-  background-color: rgb(29, 28, 28);
-}
-
-section {
-  max-width: 1600px;
-}
-
-main {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0rem;
-  align-items: center;
-}
-main section.view1 {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 1rem;
-}
-main section.view1 .top {
-  width: 100%;
-}
-main section.view1 .top img {
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  background-size: cover;
-  background-position: center;
-  border-radius: 10px;
-}
-main section.view1 .bottom {
-  background-color: rgb(55, 55, 55);
-  border-radius: 0.7rem;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  padding: 1.5rem;
-}
-main section.view1 .bottom .text {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-main section.view1 .bottom .text h3 {
-  font-weight: 300;
-  font-size: 2.5rem;
-  text-transform: uppercase;
-}
-main section.view1 .bottom .text p {
-  font-weight: 300;
-  opacity: 0.8;
-  line-height: 1.7;
-  font-size: 1.2rem;
-  color: rgb(136, 134, 134);
-}
-main section.view1 .bottom .text button {
-  width: -moz-fit-content;
-  width: fit-content;
-  border: none;
-  outline: none;
-  padding: 0.7rem 1rem;
-  border-radius: 0.5rem;
-}
-main section.view2 {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-  padding: 1rem;
-}
-main section.view2 .top, main section.view2 .bottom {
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-}
-main section.view2 .top .element, main section.view2 .bottom .element {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-main section.view2 .top .element small, main section.view2 .bottom .element small {
-  opacity: 0.6;
-}
-main section.view2 .top .element h2, main section.view2 .bottom .element h2 {
-  font-size: 3rem;
-  font-weight: 500;
-}
-main section.view3 {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  width: 100%;
-  padding: 1rem;
-}
-main section.view3 .top {
-  width: 100%;
-}
-main section.view3 .top img {
-  width: 100%;
-  border-radius: 0.7rem;
-}
-main section.view3 .bottom {
-  background-color: rgb(55, 55, 55);
-  border-radius: 0.7rem;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  padding: 1.5rem;
-}
-main section.view3 .bottom h2 {
-  font-weight: 300;
-  text-transform: uppercase;
-}
-main section.view3 .bottom .text {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-main section.view3 .bottom .text p {
-  font-weight: 300;
-  opacity: 0.8;
-  line-height: 1.7;
-  font-size: 1.2rem;
-  color: rgb(136, 134, 134);
-}
-main section.view4 {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 1rem;
-  width: 100%;
-}
-main section.view4 .card {
-  width: 100%;
-  background-image: url(https://images.unsplash.com/photo-1457551859869-d4b7ab27184c?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGhvdG9zaG9vdHxlbnwwfHwwfHx8MA%3D%3D);
-  background-size: cover;
-  aspect-ratio: 1/1;
-  padding: 1rem;
-  border-radius: 0.7rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0rem;
-  justify-content: space-between;
-  padding: 1rem;
-}
-main section.view4 .card .icon, main section.view4 .card .bottom {
-  background-color: rgba(186, 186, 186, 0.474);
-  backdrop-filter: blur(10px);
-  border: 1px solid white;
-  border-radius: 0.7rem;
-  padding: 0.5rem;
-}
-main section.view4 .card .top {
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-end;
-}
-main section.view4 .card .icon {
-  width: -moz-fit-content;
-  width: fit-content;
-  border-radius: 50%;
-}
-main section.view4 .card .bottom {
-  display: flex;
-  justify-content: space-between;
-  padding: 2rem 1rem;
-}
-main section.view4 .card .bottom p {
-  text-transform: uppercase;
-}
-
-@media (min-width: 900px) {
-  main section.view1 {
-    flex-direction: row;
-  }
-  main section.view1 .top,
-  main section.view1 .bottom {
-    width: 50%;
-  }
-  main section.view1 .top img {
-    height: 80vh;
-  }
-  main section.view1 .bottom {
-    justify-content: space-between;
-    padding: 3rem;
-  }
-  main section.view2 {
-    flex-direction: row;
-    padding: 1rem;
-  }
-  main section.view3 {
-    flex-direction: row-reverse;
-  }
-  main section.view3 .top, main section.view3 .bottom {
-    width: 50%;
-  }
-  main section.view3 .bottom {
-    justify-content: space-between;
-  }
-  main section.view3 .bottom .paragraph {
+body{
+    background-color: rgb(0, 0, 0);
     display: flex;
-    gap: 2rem;
-  }
-  main section.view3 .bottom .paragraph p {
-    font-size: 1rem;
-  }
-  main section.view4 {
-    flex-direction: row;
-  }
-}/*# sourceMappingURL=style.css.map */
+    justify-content: center;
+    align-items: center;
+}
+
+@property --rotate{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.box{
+    max-width: 300px;
+    padding-inline: 10px;
+    padding-bottom: 10px;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 25px;
+    /* box-shadow: 0 0 60px orangered; */
+    background: 
+    linear-gradient(black) padding-box,
+    conic-gradient(from var(--rotate), black, rgba(181, 10, 10, 0.997), black) border-box;
+    border: 0px solid rgba(255, 255, 255, 0);
+    animation: borderAnimate 2s infinite linear;
+    animation-play-state: paused;
+    transition: all 0.3s linear;
+    box-shadow: 0 0 0px rgb(233, 5, 5);
+    text-shadow: 0 0 0px rgb(233, 5, 5);
+} 
+
+.box:hover{
+    animation-play-state: running;
+    border-width: 5px;
+    box-shadow: 0 0 60px rgb(233, 5, 5);
+    color: rgb(233, 5, 5);
+    text-shadow: 0 0 10px rgb(233, 5, 5);
+}
+
+
+.box img{
+    width: 100%;
+}
+
+.box p{
+    font-size: 15px;
+}
+
+@keyframes borderAnimate {
+    from{
+        --rotate:0deg;
+    }
+    to{
+        --rotate:360deg;
+    }
+}
