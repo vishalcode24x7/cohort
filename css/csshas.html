@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .box {
+            height: 200px;
+            width: 200px;
+            transition: all 0.3s linear;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .green {
+            background-color: green;
+        }
+        body:has(.box:hover) .box{
+            transform: scale(0.8);
+            opacity: 0.8;
+        }
+        body .box:hover{
+            transform: scale(1.2) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="red box"></div>
+    <div class="blue box"></div>
+    <div class="green box"></div>
+</body>
+
+</html>
