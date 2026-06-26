@@ -3,34 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-html,body {
+html,
+body {
     height: 100%;
     width: 100%;
     background-color: black;
-}
-
-html{
-    font-weight: 600;
-    font-family: monospace;
-}
-
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-main{
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center;
-    align-items: center; */
-}
-
-p{
-    color: rgb(6, 214, 6);
-    font-size: 2rem;
-    width: 500px;
-    display: inline-block;
-    text-align: center;
 }
