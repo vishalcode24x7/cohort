@@ -124,3 +124,75 @@
 // }
 // let fnc = abcd.bind(obj);
 // fnc();
+
+//homework
+// let laptop = {
+//     brand : "HP",
+//     price : 60000,
+//     start : function(){
+//         console.log("Laptop Started");
+//     },
+//     increase: function(){
+//         this.incprice = this.price * 0.10;
+//         return this.price + this.incprice;
+//     }
+// }
+// console.log(laptop);
+// console.log(laptop.start());
+// console.log("New price : "+ laptop.increase())
+
+
+
+// class Employee {
+//     constructor(name, salary) {
+//         this.name = name;
+//         this.salary = salary;
+//     }
+//     showDetails(){
+//         console.log("name of Emp : "+this.name)
+//         console.log("salary of Emp : "+this.salary)
+//     }
+
+// }
+// const emp = new Employee("vishal",5000)
+// const emp2 = new Employee("Rahul", 60000);
+// const emp3 = new Employee("Amit", 70000);
+// emp.showDetails();
+// emp2.showDetails();
+// emp3.showDetails();
+
+
+// class BandAcc{
+//     constructor(Aholder, balance){
+//         this.Aholder = Aholder;
+//         this.balance = balance;
+//     }
+//     diposit(dipositamount){
+//         this.amount = dipositamount;
+//         this.balance = this.balance + this.amount
+//         console.log(this.amount + "diposit successfully")
+//     }
+//     show(){
+//         console.log("account holder : "+this.Aholder);
+//         console.log("Balance : "+this.balance);
+//     }
+// }
+// let pnb = new BandAcc("vishal",100000);
+// let pnb1 = new BandAcc("abhay",10000);
+// pnb.show();
+// pnb1.diposit(5000);
+// pnb1.show();
+
+
+
+function Vehicle(type, wheels) {
+  this.type = type;
+  this.wheels = wheels;
+  Vehicle.prototype.describe = function(){
+    console.log("Type : "+this.type);
+    console.log("Wheels : "+this.wheels);
+  }
+}
+
+let car = new Vehicle("rubbur", "modify")
+car.describe();
