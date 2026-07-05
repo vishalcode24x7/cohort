@@ -3,6 +3,7 @@
     --sec:#9D6638;
     --tri1:#F0D8A1;
     --tri2:#DCF0C3;
+    --whi:white;
 }
 * {
     margin: 0;
@@ -40,10 +41,11 @@ section.allElems{
     flex-wrap: wrap;
     align-items: flex-start;
     gap: 30px;
+    position: absolute;
 }
 
 .elem{
-    color: var(--pri);
+    color: var(--whi);
     background-color: var(--tri2);
     /* padding: 30px 40px; */
     height: 300px;
@@ -51,6 +53,7 @@ section.allElems{
     border-radius: 20px;
     overflow: hidden;
     position: relative;
+    transition: all 0.3s linear;
 }
 
 .elem img{
@@ -61,5 +64,22 @@ section.allElems{
 
 .elem h2{
     position: absolute;
+    font-size: 25px;
+    bottom: 5%;
+    right: 5%;
+    font-weight: 400;
+}
+
+.elem:active{
+    scale: 0.90;
+}
+
+.fullElem{
+    height: 100%;
+    width: 100%;
+    background-color: var(--pri);
+    padding: 40px;
     font-size: 30px;
+    display: none;
+    position: absolute;
 }
