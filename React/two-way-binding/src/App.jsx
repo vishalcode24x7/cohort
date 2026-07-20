@@ -23,7 +23,7 @@ const App = () => {
       <form onSubmit={submitHandler}>
         <input
           type="text"
-          placeholder="Enter name"
+          placeholder="Enter name" 
           value={title}
           onChange={(e) => {
             setTitle(e.target.value);

@@ -7,7 +7,7 @@ const App = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     const newAllUsers = []
-
+ 
     setTitle('');
   };
   
