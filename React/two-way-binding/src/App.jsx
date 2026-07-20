@@ -1,16 +1,23 @@
 import React from "react";
+import { useState } from "react";
+
 
 const App = () => {
-  const [title, setTitle] = useState('');
-  const [allusers, setAllusers] = useState([])
-  
+  const [title, setTitle] = useState("");
+  const [allusers, setAllusers] = useState([]);
+
   const submitHandler = (e) => {
     e.preventDefault();
-    const newAllUsers = []
+    const newAllUsers = [...allusers];
 
-    setTitle('');
+    newAllUsers.push(title)
+    setAllusers(newAllUsers)
+    console.log(newAllUsers)
+    
+    
+    setTitle("");
   };
-  
+
   return (
     <div>
       <form onSubmit={submitHandler}>
@@ -24,6 +31,12 @@ const App = () => {
         />
         <button>Submit</button>
       </form>
+
+      {
+        allusers.map(function(elem,idx){
+          return <h4 key={idx}>{elem}</h4>
+        })
+      }
     </div>
   );
 };

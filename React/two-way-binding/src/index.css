@@ -12,6 +12,10 @@ body {
     padding: 20px;
 }
 
-input{
-    background: red;
+input, button{
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 14px;
+    margin: 10px;
 }
