@@ -7,23 +7,22 @@ const App = () => {
   const [Role, setRole] = useState("");
   const [imgurl, setImgurl] = useState("");
   const [Desc, setDesc] = useState("");
-  
-  const [allusers, setAllusers] = useState([])
+
+  const [allusers, setAllusers] = useState([]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const oldusers = [...allusers]
-    oldusers.push({username,Role,Desc,imgurl})
+    const oldusers = [...allusers];
+    oldusers.push({ username, Role, Desc, imgurl });
 
-    setAllusers(oldusers)
+    setAllusers(oldusers);
 
     console.log(oldusers);
 
-
-    setDesc('')
-    setImgurl('')
-    setRole('')
-    setUsername('')
+    setDesc("");
+    setImgurl("");
+    setRole("");
+    setUsername("");
   };
 
   return (
@@ -75,9 +74,25 @@ const App = () => {
         </button>
       </form>
       <div className="px-2 py-10 flex flex-wrap justify-center">
-          {allusers.map(function(){
-            return <Card />
-          })}
+        {allusers.map(function (elem,idx) {
+          return (
+            <div key={idx} className="w-[20vw]  rounded-xl px-7 p-5 m-2 h-80 bg-white text-black text-center flex flex-col items-center gap-2">
+              <img
+                className="h-20 w-20 rounded-full object-center object-cover"
+                src={elem.imgurl}
+                alt=""
+              />
+              <h1 className="text-xl font-semibold">{elem.username}</h1>
+              <h5 className="text-base text-blue-500 font-semibold my-3">
+                {elem.Role}
+              </h5>
+              <p className="text-sm font-medium">
+                {elem.Desc}
+              </p>
+              <button className="border-none bg-amber-900 text-white px-5 py-2 rounded">Remove</button>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
