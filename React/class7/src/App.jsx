@@ -12,18 +12,20 @@ const App = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const oldusers = [...allusers];
-    oldusers.push({ username, Role, Desc, imgurl });
-
-    setAllusers(oldusers);
-
-    console.log(oldusers);
+    setAllusers([...allusers,{ username, Role, Desc, imgurl }]);
 
     setDesc("");
     setImgurl("");
     setRole("");
     setUsername("");
   };
+
+  const deleteHandler = (idx) =>{
+
+    const copyUsers = [...allusers]
+    copyUsers.splice(idx,1)
+    setAllusers(copyUsers)
+  }
 
   return (
     <div className="h-screen bg-black text-white ">
@@ -75,23 +77,7 @@ const App = () => {
       </form>
       <div className="px-2 py-10 flex flex-wrap justify-center">
         {allusers.map(function (elem,idx) {
-          return (
-            <div key={idx} className="w-[20vw]  rounded-xl px-7 p-5 m-2 h-80 bg-white text-black text-center flex flex-col items-center gap-2">
-              <img
-                className="h-20 w-20 rounded-full object-center object-cover"
-                src={elem.imgurl}
-                alt=""
-              />
-              <h1 className="text-xl font-semibold">{elem.username}</h1>
-              <h5 className="text-base text-blue-500 font-semibold my-3">
-                {elem.Role}
-              </h5>
-              <p className="text-sm font-medium">
-                {elem.Desc}
-              </p>
-              <button className="border-none bg-amber-900 text-white px-5 py-2 rounded">Remove</button>
-            </div>
-          );
+          return <Card idx={idx} elem={elem} deleteHandler={deleteHandler}/>
         })}
       </div>
     </div>
