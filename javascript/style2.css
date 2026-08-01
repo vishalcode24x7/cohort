@@ -14,7 +14,7 @@ html, body {
 .mouse-follower {
   height: 30px;
   width: 30px;
-  background-color: white;
+  background-color: rgb(77, 58, 58);
   border-radius: 50%;
   position: absolute;
 }/*# sourceMappingURL=style2.css.map */
