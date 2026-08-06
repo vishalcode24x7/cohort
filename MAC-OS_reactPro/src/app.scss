@@ -19,4 +19,6 @@ main{
     background-image: url('./assets/bg.jpg');
     background-size: cover;
     background-position: center;
+    position: relative;
+    overflow: hidden;
 }

@@ -1,0 +1,11 @@
+.note-window{
+    padding: 2rem;
+    height: 100%;
+    font-size: 1rem;
+    overflow: auto;
+    padding-bottom: 10rem;
+
+    pre{
+        background-color: transparent !important;
+    }
+}
