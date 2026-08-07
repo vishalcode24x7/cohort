@@ -1,0 +1,29 @@
+.cli-window {
+    height: 50vh;
+    overflow: auto;
+    background-color: gray;
+
+    .react-terminal{
+        height: 50vh !important;
+    }
+
+    .ReactTerminal-window-buttons,
+    .ReactTerminal-title,
+    .terminal-menu,
+    .terminal-title,
+    [class*="TerminalHeader"],
+    [class*="terminal-header"] {
+        display: none !important;
+    }
+
+    // agar upar wala kaam na kare to first child div hi header hota hai kayi versions mein
+    >div>div:first-child {
+        display: none !important;
+    }
+    .react-terminal-wrapper{
+        height: 100%;
+    }
+
+    
+    
+}

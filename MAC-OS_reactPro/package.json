@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "react": "^19.2.8",
+    "react-console-emulator": "^5.0.2",
     "react-dom": "^19.2.8",
     "react-markdown": "^10.1.0",
     "react-rnd": "^10.5.3",
     "react-syntax-highlighter": "^16.1.1",
+    "react-terminal-ui": "^1.4.0",
     "sass": "^1.102.0"
   },
   "devDependencies": {
