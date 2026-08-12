@@ -11,9 +11,9 @@
     // }
  ]
 
- app.get("/", (req,res) =>{
-    res.send("hello world") 
- })
+//  app.get("/", (req,res) =>{
+//     res.send("hello world") 
+//  })
 
  //POST
  app.post("/notes",(req,res) =>{
@@ -35,8 +35,7 @@
     delete notes[ req.params.index ]
     res.send("deleted")
  })
-
-
+ 
  //patch
  app.patch("/notes/:index",(req, res) =>{
    notes[req.params.index].description = req.body.description
