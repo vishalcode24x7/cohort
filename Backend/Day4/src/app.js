@@ -36,4 +36,11 @@
     res.send("deleted")
  })
 
+
+ //patch
+ app.patch("/notes/:index",(req, res) =>{
+   notes[req.params.index].description = req.body.description
+   res.send("note updated")
+ })
+
  module.exports = app
