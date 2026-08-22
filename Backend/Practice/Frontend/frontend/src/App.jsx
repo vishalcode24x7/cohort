@@ -24,7 +24,7 @@ const App = () => {
     console.log(title.value, description.value);
 
     axios
-      .post("http://localhost:3000/api/notes", {
+      .post("https://cohort-t8tf.onrender.com//api/notes", {
         title: title.value,
         description: description.value,
       })
@@ -36,7 +36,7 @@ const App = () => {
 
   //Deleting note
   function handleDeleteNote(noteId){
-    axios.delete("http://localhost:3000/api/notes/"+noteId)
+    axios.delete("https://cohort-t8tf.onrender.com//api/notes/"+noteId)
     .then(res=>{
       console.log(res.data);
       fetchNotes()
@@ -45,7 +45,7 @@ const App = () => {
 
   //Update note
   function updateNote(noteId){
-    axios.delete("http://localhost:3000/api/notes/"+noteId)
+    axios.delete("https://cohort-t8tf.onrender.com//api/notes/"+noteId)
     
   }
 
