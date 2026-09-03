@@ -6,5 +6,5 @@ connectToDatabase()
 
 app.listen(3000, ()=>{
     console.log("Server is working on 3000");
-    
+   
 })
