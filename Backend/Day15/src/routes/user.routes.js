@@ -4,6 +4,7 @@ const identifyUser = require("../middlewares/auth.middleware")
 
 const userRouter = express.Router();
 
+//api
 userRouter.post("/follow/:username", identifyUser, userController.followUserController)
 
 
