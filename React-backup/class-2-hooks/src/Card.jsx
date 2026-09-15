@@ -19,7 +19,7 @@ const Card = (props) => {
                     <button onClick={like} className='px-8 py-3 bg-blue-500 rounded-md'><span>Like</span></button>
                     <button onClick={Dislike} className='px-8 py-3 bg-red-500 rounded-md'>Dislike</button>
                 </div>
-                <div className="like-count">Likes = {Like}</div>
+                <div className="like-count">Likes ={Like}</div>
             </div>
         </div>
     )
