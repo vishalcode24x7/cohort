@@ -1,26 +1,18 @@
-const followModel = require("../models/follow.modle")
-
+const followModel = require("../models/follow.model")
+const userModel = require("../models/user.model")
 
 
 async function followUserController(req, res) {
     const followerUsername = req.user.username
     const followeeUsername = req.params.username
 
-    const isFolloweeExists = await followModel.findOne({
-        username: followeeUsername
-    })
-
-    if(!isFolloweeExists){
-        return res.status(404).json({
-            message: "User you are trying to follow does not exist"
-        })
-    }
 
     if (followeeUsername == followerUsername) {
         return res.status(400).json({
             message: "You cannot follow yourself"
         })
     }
+
 
     const isAlreadyFollowing = await followModel.findOne({
         follower: followerUsername,
@@ -34,6 +26,16 @@ async function followUserController(req, res) {
         })
     }
 
+    const isFolloweeExists = await userModel.findOne({
+        username: followeeUsername
+    })
+
+    if (!isFolloweeExists) {
+        return res.status(404).json({
+            message: "User you are trying to follow does not exist"
+        })
+    }
+
     const followRecord = await followModel.create({
         follower: followerUsername,
         followee: followeeUsername
@@ -41,11 +43,12 @@ async function followUserController(req, res) {
 
     res.status(201).json({
         message: `You are now following ${followeeUsername}`,
-        follow: followRecord
+        follow: followRecord,
+        status
     })
 }
 
-async function unfollowUserController(req, res){
+async function unfollowUserController(req, res) {
     const followerUsername = req.user.username
     const followeeUsername = req.params.username
 
@@ -54,7 +57,7 @@ async function unfollowUserController(req, res){
         followee: followeeUsername,
     })
 
-    if(!isUserFollowing){
+    if (!isUserFollowing) {
         return res.status(200).json({
             message: `You are not following ${followeeUsername}`
         })
