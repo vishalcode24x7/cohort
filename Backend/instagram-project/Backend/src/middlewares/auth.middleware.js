@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 
 
 async function identifyUser(req, res, next) {
@@ -25,5 +25,7 @@ async function identifyUser(req, res, next) {
     next();
 
 }
+
+
 
 module.exports = identifyUser
