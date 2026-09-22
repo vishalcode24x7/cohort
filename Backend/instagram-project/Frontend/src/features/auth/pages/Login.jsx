@@ -3,13 +3,13 @@ import "../style/form.scss"
 import { Link, useNavigate } from 'react-router'
 import { useAuth } from '../hooks/useAuth'
 
-
+ 
 const Login = () => {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
-  const {handleLogin, loading} = useAuth()
+  const {user, loading, handleLogin} = useAuth()
   const navigate = useNavigate()
 
   if(loading){
@@ -18,10 +18,10 @@ const Login = () => {
     )
   }
 
-  function handleSubmit(e) {
+  const handleSubmit = async(e) => {
     e.preventDefault()
 
-    handleLogin(username, password)
+    await handleLogin(username, password)
       .then(res=>{
         console.log(res);
         navigate("/")
