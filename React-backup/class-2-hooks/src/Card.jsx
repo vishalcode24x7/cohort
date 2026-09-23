@@ -12,7 +12,6 @@ const Card = (props) => {
     return (
         <div className='p-5'>
             <div className="card p-3 flex flex-col w-60 h-70 bg-zinc-600 rounded-md">
-                <img className='w-20 h-20 rounded-full' src={props.user.DP} alt="" />
                 <h1>{props.user.Name}</h1>
                 <p>{props.user.Title}</p>
                 <div className='w-full py-5 flex gap-4'>
