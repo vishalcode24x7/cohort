@@ -6,6 +6,8 @@ const App = () => {
   const [title, settitle] = useState("")
   const [desc, setdesc] = useState("")
 
+  const [edit, setEdit] = useState(null)
+
   const [postData, setpostData] = useState(() => {
     const savedData = localStorage.getItem('FormData')
 
@@ -21,19 +23,26 @@ const App = () => {
   const submitHandler = (e) => {
     e.preventDefault()
 
-    setpostData([
-      ...postData,
-      {
-        title,
-        desc
-      }
-    ])
+    if (edit != null) {
+      const copy = [...postData]
+      copy[edit] = { title, desc }
+      setpostData(copy)
+      setEdit(null)
+    } else {
+      setpostData([...postData,
+        {
+          title,desc
+        }
+      ])
+    }
+
+
 
     settitle("")
     setdesc("")
   }
 
-  const deleteHandler = (idx)=>{
+  const deleteHandler = (idx) => {
     const copyArr = [...postData]
     copyArr.splice(idx, 1)
 
@@ -68,9 +77,11 @@ const App = () => {
           Create Post
         </button>
 
+
       </form>
 
-      <Card postData={postData} deleteHandler={deleteHandler} />
+      <Card postData={postData} deleteHandler={deleteHandler} setEdit={setEdit}
+        settitle={settitle} setdesc={setdesc} />
 
     </div>
   )
