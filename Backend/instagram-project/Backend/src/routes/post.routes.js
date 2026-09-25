@@ -17,6 +17,9 @@ postRouter.get("/details/:postId", identifyUser, postController.getPostDetailsCo
 //POST /api/posts/like/:postId
 postRouter.post("/like/:postId", identifyUser, postController.likePostController)
 
+//POST /api/posts/like/:postId
+postRouter.post("/unlike/:postId", identifyUser, postController.unlikePostController)
+
 //GET /api/posts/feed
 postRouter.get("/feed", identifyUser, postController.getFeedController)
 
