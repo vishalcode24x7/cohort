@@ -1,10 +1,9 @@
-require('dotenv').config()
+require("dotenv").config()
 const app = require("./src/app")
-const connectToDatabase = require("./src/config/database")
+const connecToDatabase = require("./src/config/database")
 
-connectToDatabase()
+connecToDatabase()
 
 app.listen(3000, ()=>{
-    console.log("Server is working on 3000");
-   
+    console.log("server is running on 3000")
 })
