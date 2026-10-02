@@ -14,6 +14,11 @@ const Nav = () => {
             navigate("/create-post")
         }}
         className='button primary-button'>New Post</button>
+        <button
+        onClick={()=>{
+            navigate("/profile")
+        }}
+        className='button primary-button'>Profile</button>
     </nav>
   )
 }

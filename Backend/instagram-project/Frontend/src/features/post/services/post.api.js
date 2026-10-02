@@ -5,8 +5,13 @@ const api = axios.create({
     withCredentials: true
 })
 
-export async function getFeed(){
+export async function getFeed() {
     const response = await api.get('/api/posts/feed')
+    return response.data
+}
+
+export async function getPost() {
+    const response = await api.get('/api/posts')
     return response.data
 }
 
@@ -21,12 +26,12 @@ export async function createPost(imageFile, caption) {
     return response.data
 }
 
-export async function likePost(postId){
+export async function likePost(postId) {
     const response = await api.post("/api/posts/like/" + postId)
     return response.data
 }
 
-export async function unLikedPost(postId){
+export async function unLikedPost(postId) {
     const response = await api.post("/api/posts/unlike/" + postId)
     return response.data
 }
