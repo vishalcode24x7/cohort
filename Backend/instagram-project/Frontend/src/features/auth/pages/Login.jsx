@@ -29,7 +29,6 @@ const Login = () => {
     
   }
 
-
   return (
     <main>
       <h1 className='instagram'>Instagram</h1>

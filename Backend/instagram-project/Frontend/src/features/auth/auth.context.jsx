@@ -1,6 +1,6 @@
-import { createContext, useState } from "react";
-import { register, login, getMe } from "./services/auth.api";
+// State Layer
 
+import { createContext, useState } from "react";
 
 export const AuthContext = createContext()
 

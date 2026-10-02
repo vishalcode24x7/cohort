@@ -1,3 +1,5 @@
+// Hook Layer
+
 import { useContext } from "react";
 import { AuthContext } from "../auth.context.jsx";
 import { login, register, getMe } from "../services/auth.api.js";
@@ -25,6 +27,6 @@ export function useAuth(){
     }
 
     return{
-        user, loading, handleLogin, handleRegister
+        user, loading, handleLogin, handleRegister, handleGetMe
     }
 }
