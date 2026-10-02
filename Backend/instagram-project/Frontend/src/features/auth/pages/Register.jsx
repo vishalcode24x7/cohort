@@ -27,8 +27,9 @@ const Register = () => {
 
   return (
     <main>
+      <h1 className='instagram'>Instagram</h1>
       <div className="form-container">
-        <h1>Register</h1>
+        <h2>Register</h2>
         <form onSubmit={handleSubmit}>
           <input
             onChange={(e) => { setUsername(e.target.value) }}

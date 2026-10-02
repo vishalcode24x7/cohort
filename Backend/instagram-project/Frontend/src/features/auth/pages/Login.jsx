@@ -32,8 +32,9 @@ const Login = () => {
 
   return (
     <main>
+      <h1 className='instagram'>Instagram</h1>
       <div className="form-container">
-        <h1>Login</h1>
+        <h2>Login</h2>
         <form onSubmit={handleSubmit}>
           <input
             onChange={(e) => { setUsername(e.target.value) }}
