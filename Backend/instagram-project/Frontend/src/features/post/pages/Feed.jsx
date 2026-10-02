@@ -17,9 +17,6 @@ const Feed = () => {
         </h1>
     }
 
-    
-
-
     return (
         <main className='feed-page'>
             <Nav />

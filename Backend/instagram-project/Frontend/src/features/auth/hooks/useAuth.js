@@ -27,6 +27,6 @@ export function useAuth(){
     }
 
     return{
-        user, loading, handleLogin, handleRegister, handleGetMe
+        user, loading, handleLogin, handleRegister
     }
 }

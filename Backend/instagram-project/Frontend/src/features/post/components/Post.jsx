@@ -1,3 +1,4 @@
+import "../style/feed.scss"
 import React from 'react'
 import { usePost } from '../Hook/usePost'
 
