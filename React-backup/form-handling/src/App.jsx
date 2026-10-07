@@ -108,7 +108,6 @@ import { useForm } from "react-hook-form"
 
 const App = () => {
   console.log("App rendering");
-  
 
   const {register, handleSubmit} = useForm();
 
