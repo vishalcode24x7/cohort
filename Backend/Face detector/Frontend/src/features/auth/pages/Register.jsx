@@ -1,10 +1,22 @@
 import React from 'react'
+import "../style/register.scss"
+import FormGroup from '../components/FormGroup'
+import { Link } from "react-router"
 
 const Register = () => {
   return (
-    <div>
-      Register
-    </div>
+    <main className='register-page'>
+      <div className="form-container">
+        <h1>Register</h1>
+        <form>
+          <FormGroup label="Username" type="text" name="username" placeholder="Enter your username" />
+          <FormGroup label="Email" type="email" name="email" placeholder="Enter your email" />
+          <FormGroup label="Password" type="password" name="password" placeholder="Enter your password" />
+          <button className="button" type="submit">Register</button>
+        </form>
+        <p>Already have an account? <Link to="/login">Login</Link></p>
+      </div>
+    </main>
   )
 }
 
