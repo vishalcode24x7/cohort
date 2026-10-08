@@ -10,11 +10,11 @@ app.use(cors({
     credentials: true
 }))
 
+//routes
 const authRoutes = require('./routes/auth.routes')
 app.use("/api/auth", authRoutes)
 
-module.exports = app;
+const songRoutes = require("./routes/song.routes")
+app.use("/api/songs", songRoutes)
 
-// 1 TASK
-// userSchema.pre("save", function(next) { })
-// userSchema.post("save", function(next) { })
+module.exports = app;
