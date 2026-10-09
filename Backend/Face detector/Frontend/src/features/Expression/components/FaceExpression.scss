@@ -1,0 +1,227 @@
+.face-expression {
+  width: min(100% - 32px, 620px);
+  margin: 48px auto 0;
+  padding: clamp(22px, 5vw, 40px);
+  overflow: hidden;
+  border: 1px solid rgba(164, 230, 140, 0.18);
+  border-radius: 28px;
+  background:
+    radial-gradient(ellipse at 50% -20%, rgba(164, 230, 140, 0.16), transparent 55%),
+    linear-gradient(145deg, #252a25, #191c19 72%);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
+  text-align: center;
+
+  &__heading {
+    margin-bottom: 26px;
+
+    h1 {
+      margin-top: 10px;
+      color: #f6f8f4;
+      font-size: clamp(26px, 5vw, 36px);
+      font-weight: 600;
+      letter-spacing: -0.045em;
+      line-height: 1.15;
+    }
+
+    p {
+      max-width: 380px;
+      margin: 10px auto 0;
+      color: #a7afa5;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  }
+
+  &__eyebrow,
+  &__camera-label,
+  &__result-label {
+    color: #a4e68c;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+  }
+
+  &__camera {
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 20px;
+    background: rgba(9, 12, 9, 0.58);
+  }
+
+  &__camera-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 2px 0 11px 3px;
+    color: #a7afa5;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-align: left;
+  }
+
+  &__live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #a4e68c;
+    box-shadow: 0 0 10px rgba(164, 230, 140, 0.7);
+  }
+
+  &__video-frame {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border-radius: 13px;
+    background:
+      radial-gradient(ellipse at center, rgba(164, 230, 140, 0.08), transparent 58%),
+      #101310;
+  }
+
+  &__video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__corner {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-color: rgba(190, 241, 171, 0.8);
+    border-style: solid;
+    pointer-events: none;
+
+    &--top-left {
+      top: 12px;
+      left: 12px;
+      border-width: 2px 0 0 2px;
+      border-top-left-radius: 5px;
+    }
+
+    &--top-right {
+      top: 12px;
+      right: 12px;
+      border-width: 2px 2px 0 0;
+      border-top-right-radius: 5px;
+    }
+
+    &--bottom-left {
+      bottom: 12px;
+      left: 12px;
+      border-width: 0 0 2px 2px;
+      border-bottom-left-radius: 5px;
+    }
+
+    &--bottom-right {
+      right: 12px;
+      bottom: 12px;
+      border-width: 0 2px 2px 0;
+      border-bottom-right-radius: 5px;
+    }
+  }
+
+  &__result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 18px 0;
+    padding: 13px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 13px;
+    background: rgba(255, 255, 255, 0.035);
+    text-align: left;
+
+    strong {
+      color: #f3f7ef;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+  }
+
+  &__result-label {
+    color: #899287;
+    font-size: 9px;
+  }
+
+  &__button {
+    display: flex;
+    width: 100%;
+    min-height: 50px;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 13px;
+    background: #a4e68c;
+    color: #172016;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 160ms ease, transform 160ms ease;
+
+    span {
+      font-size: 20px;
+      line-height: 1;
+      transition: transform 160ms ease;
+    }
+
+    &:hover {
+      transform: translateY(-1px);
+      background: #b9f0a5;
+
+      span {
+        transform: translateX(3px);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid #d4f8c6;
+      outline-offset: 3px;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .face-expression {
+    width: calc(100% - 24px);
+    margin-top: 24px;
+    padding: 22px 16px;
+    border-radius: 22px;
+
+    &__heading {
+      margin-bottom: 20px;
+    }
+
+    &__camera {
+      padding: 9px;
+      border-radius: 16px;
+    }
+
+    &__corner {
+      width: 14px;
+      height: 14px;
+    }
+
+    &__result {
+      margin: 14px 0;
+      padding: 12px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .face-expression__button,
+  .face-expression__button span {
+    transition: none;
+  }
+}

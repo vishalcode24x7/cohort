@@ -20,6 +20,8 @@ const Player = () => {
     const [currentTime, setCurrentTime] = useState(0)
     const [duration, setDuration] = useState(0)
     const [playbackRate, setPlaybackRate] = useState(1)
+    const [volume, setVolume] = useState(1)
+    const previousVolumeRef = useRef(1)
     const [error, setError] = useState('')
 
     useEffect(() => {
@@ -65,6 +67,20 @@ const Player = () => {
         const rate = Number(event.target.value)
         setPlaybackRate(rate)
         if (audioRef.current) audioRef.current.playbackRate = rate
+    }
+
+    const handleVolumeChange = (event) => {
+        const nextVolume = Number(event.target.value)
+        setVolume(nextVolume)
+        if (nextVolume > 0) previousVolumeRef.current = nextVolume
+        if (audioRef.current) audioRef.current.volume = nextVolume
+    }
+
+    const toggleMute = () => {
+        const nextVolume = volume > 0 ? 0 : previousVolumeRef.current || 1
+        if (volume > 0) previousVolumeRef.current = volume
+        setVolume(nextVolume)
+        if (audioRef.current) audioRef.current.volume = nextVolume
     }
 
     return (
@@ -169,16 +185,59 @@ const Player = () => {
                 </div>
             </div>
 
-            <label className="player__speed">
-                <span>Speed</span>
-                <select value={playbackRate} onChange={handleRateChange} aria-label="Playback speed">
-                    {PLAYBACK_RATES.map((rate) => (
-                        <option key={rate} value={rate}>
-                            {rate}x
-                        </option>
-                    ))}
-                </select>
-            </label>
+            <div className="player__options">
+                <label className="player__speed">
+                    <span>Speed</span>
+                    <select value={playbackRate} onChange={handleRateChange} aria-label="Playback speed">
+                        {PLAYBACK_RATES.map((rate) => (
+                            <option key={rate} value={rate}>
+                                {rate}x
+                            </option>
+                        ))}
+                    </select>
+                </label>
+                <div className="player__volume">
+                    <button
+                        className="player__volume-button"
+                        type="button"
+                        onClick={toggleMute}
+                        aria-label={volume === 0 ? 'Unmute' : 'Mute'}
+                        title={volume === 0 ? 'Unmute' : 'Mute'}
+                    >
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            {volume === 0 ? (
+                                <>
+                                    <path d="M11 5 6 9H3v6h3l5 4z" />
+                                    <path d="m16 9 5 6m0-6-5 6" />
+                                </>
+                            ) : (
+                                <>
+                                    <path d="M11 5 6 9H3v6h3l5 4z" />
+                                    {volume < 0.5 ? (
+                                        <path d="M15 9a5 5 0 0 1 0 6" />
+                                    ) : (
+                                        <>
+                                            <path d="M15 9a5 5 0 0 1 0 6" />
+                                            <path d="M18 6a9 9 0 0 1 0 12" />
+                                        </>
+                                    )}
+                                </>
+                            )}
+                        </svg>
+                    </button>
+                    <input
+                        className="player__volume-slider"
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        value={volume}
+                        onChange={handleVolumeChange}
+                        aria-label="Volume"
+                        style={{ '--volume': `${volume * 100}%` }}
+                    />
+                </div>
+            </div>
 
             {error && <p className="player__error" role="status">{error}</p>}
         </section>

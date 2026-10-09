@@ -214,6 +214,89 @@
     }
   }
 
+  &__options {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__volume {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__volume-button {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: #e6e4e4;
+    cursor: pointer;
+    transition: color 150ms ease, background-color 150ms ease;
+
+    &:hover {
+      background: rgba(164, 230, 140, 0.1);
+      color: #a4e68c;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #a4e68c;
+      outline-offset: 2px;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.8;
+    }
+  }
+
+  &__volume-slider {
+    width: 82px;
+    height: 4px;
+    border-radius: 5px;
+    outline: none;
+    appearance: none;
+    background: linear-gradient(
+      to right,
+      #a4e68c var(--volume),
+      #494646 var(--volume)
+    );
+    cursor: pointer;
+
+    &::-webkit-slider-thumb {
+      width: 10px;
+      height: 10px;
+      border: 0;
+      border-radius: 50%;
+      appearance: none;
+      background: #c1f2af;
+    }
+
+    &::-moz-range-thumb {
+      width: 10px;
+      height: 10px;
+      border: 0;
+      border-radius: 50%;
+      background: #c1f2af;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #a4e68c;
+      outline-offset: 4px;
+    }
+  }
+
   &__error {
     position: absolute;
     right: 24px;
@@ -238,10 +321,15 @@
       grid-row: 2;
     }
 
-    &__speed {
+    &__options {
       grid-column: 2;
       grid-row: 1;
       justify-self: end;
+      gap: 10px;
+    }
+
+    &__volume-slider {
+      width: 64px;
     }
 
     &__error {
