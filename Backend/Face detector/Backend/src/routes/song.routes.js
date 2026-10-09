@@ -8,4 +8,7 @@ const router = express.Router()
 //POST /api/songs/
 router.post('/', upload.single("song"), songController.uploadSong)
 
+//GET /
+router.get('/', songController.getSong)
+
 module.exports = router
