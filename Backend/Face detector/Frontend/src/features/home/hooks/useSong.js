@@ -1,19 +1,55 @@
 import { useContext } from "react"
-import { getSong } from "../service/song.api"
+import { getSongs } from "../service/song.api"
 import { SongContext } from "../song.context"
 
 
 export const useSong = () => {
     const context = useContext(SongContext)
 
-    const { loading, setLoading, song, setSong } = context
+    const {
+        loading,
+        setLoading,
+        song,
+        setSong,
+        songs,
+        setSongs,
+        mood,
+        setMood,
+        error,
+        setError,
+    } = context
 
-    async function handleGetSong({ mood }) {
+    async function handleGetSong({ mood: detectedMood }) {
+        const requestedMood = detectedMood?.trim().toLowerCase()
+        if (!requestedMood) {
+            setError("No expression was detected. Please try again.")
+            return
+        }
+
         setLoading(true)
-        const data = await getSong({ mood })
-        setSong(data.song)
-        setLoading(false)
+        setMood(requestedMood)
+        setError("")
+        try {
+            const data = await getSongs({ mood: requestedMood })
+            const matchingSongs = Array.isArray(data.songs) ? data.songs : []
+            setSongs(matchingSongs)
+            setSong(matchingSongs[0] ?? null)
+        } catch {
+            setSongs([])
+            setSong(null)
+            setError("Could not load songs for this mood. Please try again.")
+        } finally {
+            setLoading(false)
+        }
     }
 
-    return ({ loading, song, handleGetSong })
+    return {
+        loading,
+        song,
+        songs,
+        mood,
+        error,
+        selectSong: setSong,
+        handleGetSong,
+    }
 }

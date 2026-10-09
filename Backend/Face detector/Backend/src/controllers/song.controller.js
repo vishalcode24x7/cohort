@@ -36,15 +36,21 @@ async function uploadSong(req, res) {
 }
 
 async function getSong(req, res){
-    const {mood} = req.query
+    const mood = typeof req.query.mood === "string"
+        ? req.query.mood.trim().toLowerCase()
+        : ""
 
-    const song = await songModel.findOne({
-        mood
-    })
+    if (!mood) {
+        return res.status(400).json({
+            message: "A mood is required to fetch songs."
+        })
+    }
+
+    const songs = await songModel.find({ mood }).sort({ title: 1 })
 
     res.status(200).json({
-        message: "Song fetched successfully.",
-        song,
+        message: "Songs fetched successfully.",
+        songs,
     })
 }
 
