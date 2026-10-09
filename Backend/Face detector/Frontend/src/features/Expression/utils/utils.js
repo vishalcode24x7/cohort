@@ -45,13 +45,15 @@ export const detect = ({ landmarkerRef, videoRef, setExpression}) => {
         const frownRight = getScore("mouthFrownRight");
         let currentExpression = "Neutral";
         if (smileLeft > 0.5 && smileRight > 0.5) {
-            currentExpression = "Happy 😄";
+            currentExpression = "happy";
         } else if (jawOpen > 0.6 && browUp > 0.5) {
-            currentExpression = "Surprised 😲";
+            currentExpression = "surprised";
         } else if (frownLeft > 0.01 && frownRight > 0.01) {
-            currentExpression = "Sad 😢";
+            currentExpression = "sad";
         }
         setExpression(currentExpression);
+
+        return currentExpression
     }
 
     animationRef.current = requestAnimationFrame(detect);
