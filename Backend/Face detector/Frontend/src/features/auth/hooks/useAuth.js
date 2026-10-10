@@ -24,9 +24,19 @@ export const useAuth = () => {
 
     async function handleGetMe() {
         setLoading(true)
-        const data = await getMe()
-        setUser(data.user)
-        setLoading(false)
+        try {
+            const data = await getMe()
+            setUser(data.user)
+        } catch (error) {
+            if (error.response?.status === 401) {
+                setUser(null)
+                return
+            }
+
+            throw error
+        } finally {
+            setLoading(false)
+        }
     }
 
     async function handleLogout() {
@@ -37,7 +47,9 @@ export const useAuth = () => {
     }
 
     useEffect(() => {
-        handleGetMe()
+        handleGetMe().catch((error) => {
+            console.error("Failed to check the current user", error)
+        })
     }, [])
 
     return({
