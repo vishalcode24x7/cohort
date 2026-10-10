@@ -164,6 +164,12 @@
     cursor: pointer;
     transition: background-color 160ms ease, transform 160ms ease;
 
+    &:disabled {
+      opacity: 0.55;
+      cursor: wait;
+      transform: none;
+    }
+
     span {
       font-size: 20px;
       line-height: 1;
@@ -187,6 +193,13 @@
     &:active {
       transform: translateY(0);
     }
+  }
+
+  &__error {
+    margin: 0 0 12px;
+    color: #ffb4a9;
+    font-size: 12px;
+    line-height: 1.5;
   }
 }
 

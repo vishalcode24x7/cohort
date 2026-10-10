@@ -1,16 +1,21 @@
 .player {
-  position: relative;
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  bottom: 16px;
+  left: 50%;
   display: grid;
   grid-template-columns: minmax(180px, 1fr) minmax(260px, 1.5fr) auto;
   align-items: center;
   gap: 24px;
   width: min(900px, calc(100% - 32px));
-  margin: 28px auto;
+  margin: 0;
   padding: 20px 24px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
   background: linear-gradient(135deg, #252424, #191818);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+  transform: translateX(-50%);
 
   audio {
     display: none;
@@ -322,14 +327,7 @@
     }
 
     &__options {
-      grid-column: 2;
-      grid-row: 1;
-      justify-self: end;
-      gap: 10px;
-    }
-
-    &__volume-slider {
-      width: 64px;
+      display: none;
     }
 
     &__error {

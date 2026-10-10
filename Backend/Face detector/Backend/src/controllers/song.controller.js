@@ -40,13 +40,8 @@ async function getSong(req, res){
         ? req.query.mood.trim().toLowerCase()
         : ""
 
-    if (!mood) {
-        return res.status(400).json({
-            message: "A mood is required to fetch songs."
-        })
-    }
-
-    const songs = await songModel.find({ mood }).sort({ title: 1 })
+    const query = mood ? { mood } : {}
+    const songs = await songModel.find(query).sort({ title: 1 })
 
     res.status(200).json({
         message: "Songs fetched successfully.",

@@ -2,33 +2,58 @@ import { useEffect, useRef, useState } from "react";
 import { detect, init } from "../utils/utils";
 import "./FaceExpression.scss";
 
+function releaseFaceDetector({ landmarkerRef, videoRef, streamRef }) {
+    landmarkerRef.current?.close();
+    streamRef.current?.getTracks().forEach((track) => track.stop());
+    if (videoRef.current) videoRef.current.srcObject = null;
+}
+
 export default function FaceExpression({ onClick = () => { } }) {
     const videoRef = useRef(null);
     const landmarkerRef = useRef(null);
     const streamRef = useRef(null);
+    const mountedRef = useRef(false);
 
-    const [expression, setExpression] = useState("Detecting...");
+    const [expression, setExpression] = useState("Camera is off");
+    const [cameraReady, setCameraReady] = useState(false);
+    const [cameraLoading, setCameraLoading] = useState(false);
+    const [cameraError, setCameraError] = useState("");
 
     useEffect(() => {
-        init({ landmarkerRef, videoRef, streamRef });
-
+        mountedRef.current = true;
         return () => {
-            if (landmarkerRef.current) {
-                landmarkerRef.current.close();
-            }
-
-            if (videoRef.current?.srcObject) {
-                videoRef.current.srcObject
-                    .getTracks()
-                    .forEach((track) => track.stop());
-            }
+            mountedRef.current = false;
+            releaseFaceDetector({ landmarkerRef, videoRef, streamRef });
         };
     }, []);
 
     async function handleClick() {
-        const expression = detect({ landmarkerRef, videoRef, setExpression })
-        console.log(expression)
-        onClick(expression)
+        if (cameraLoading) return;
+        if (!cameraReady) {
+            setCameraLoading(true);
+            setCameraError("");
+            setExpression("Preparing camera...");
+            try {
+                await init({ landmarkerRef, videoRef, streamRef });
+                if (!mountedRef.current) {
+                    releaseFaceDetector({ landmarkerRef, videoRef, streamRef });
+                    return;
+                }
+                setCameraReady(true);
+                setExpression("Ready to detect");
+            } catch {
+                if (!mountedRef.current) return;
+                releaseFaceDetector({ landmarkerRef, videoRef, streamRef });
+                setCameraError("Camera or face-detection setup failed. Check camera permissions and try again.");
+                setExpression("Camera unavailable");
+            } finally {
+                if (mountedRef.current) setCameraLoading(false);
+            }
+            return;
+        }
+
+        const detectedExpression = detect({ landmarkerRef, videoRef, setExpression })
+        if (detectedExpression) onClick(detectedExpression)
     }
 
 
@@ -65,8 +90,10 @@ export default function FaceExpression({ onClick = () => { } }) {
                 <strong>{expression}</strong>
             </div>
 
-            <button className="face-expression__button" onClick={handleClick}>
-                Detect my expression
+            {cameraError && <p className="face-expression__error" role="alert">{cameraError}</p>}
+
+            <button className="face-expression__button" onClick={handleClick} disabled={cameraLoading}>
+                {cameraLoading ? "Starting camera..." : cameraReady ? "Detect my expression" : "Enable camera"}
                 <span aria-hidden="true"></span>
             </button>
         </section>

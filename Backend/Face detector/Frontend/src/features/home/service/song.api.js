@@ -7,7 +7,8 @@ const api = axios.create({
 })
 
 
-export async function getSongs({ mood }) {
-    const response = await api.get("/api/songs", { params: { mood } })
+export async function getSongs({ mood } = {}) {
+    const params = mood ? { mood } : undefined
+    const response = await api.get("/api/songs", { params })
     return response.data
 }

@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useCallback, useContext } from "react"
 import { getSongs } from "../service/song.api"
 import { SongContext } from "../song.context"
 
@@ -43,6 +43,24 @@ export const useSong = () => {
         }
     }
 
+    const handleGetAllSongs = useCallback(async () => {
+        setLoading(true)
+        setMood("")
+        setError("")
+        try {
+            const data = await getSongs()
+            const allSongs = Array.isArray(data.songs) ? data.songs : []
+            setSongs(allSongs)
+            setSong(allSongs[0] ?? null)
+        } catch {
+            setSongs([])
+            setSong(null)
+            setError("Could not load songs. Please try again.")
+        } finally {
+            setLoading(false)
+        }
+    }, [setError, setLoading, setMood, setSong, setSongs])
+
     return {
         loading,
         song,
@@ -51,5 +69,6 @@ export const useSong = () => {
         error,
         selectSong: setSong,
         handleGetSong,
+        handleGetAllSongs,
     }
 }

@@ -56,5 +56,6 @@ export const detect = ({ landmarkerRef, videoRef, setExpression}) => {
         return currentExpression
     }
 
-    animationRef.current = requestAnimationFrame(detect);
+    setExpression("No face detected");
+    return null
 };

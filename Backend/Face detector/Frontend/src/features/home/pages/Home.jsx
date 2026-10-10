@@ -1,21 +1,53 @@
-import React from 'react'
+import { useEffect } from 'react'
+import { Link } from 'react-router'
+import { useAuth } from '../../auth/hooks/useAuth'
 import FaceExpression from '../../Expression/components/FaceExpression'
 import Player from '../components/Player'
 import { useSong } from '../hooks/useSong'
 import './Home.scss'
 
 const Home = () => {
-  const { loading, songs, mood, error, handleGetSong, selectSong, song } = useSong()
+  const { loading, songs, mood, error, handleGetSong, handleGetAllSongs, selectSong, song } = useSong()
+  const { user, loading: authLoading, handleLogout } = useAuth()
+
+  useEffect(() => {
+    handleGetAllSongs()
+  }, [handleGetAllSongs])
 
   return (
     <main className="home">
+      <header className="home__header">
+        <Link className="home__brand" to="/">Moodify</Link>
+        <nav className="home__auth" aria-label="Account">
+          {user ? (
+            <div className="home__account">
+              <span className="home__username">{user.username}</span>
+              <button
+                className="home__logout"
+                type="button"
+                onClick={handleLogout}
+                disabled={authLoading}
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <>
+              <Link className="home__auth-link" to="/login">Login</Link>
+              <Link className="home__auth-link home__auth-link--register" to="/register">
+                Register
+              </Link>
+            </>
+          )}
+        </nav>
+      </header>
       <FaceExpression onClick={(expression) => handleGetSong({ mood: expression })} />
       <section className="song-list" aria-labelledby="song-list-title">
         <div className="song-list__heading">
           <div>
             <span className="song-list__eyebrow">YOUR MOOD, YOUR MUSIC</span>
             <h2 id="song-list-title">
-              {mood ? `Songs for ${mood}` : 'Your playlist'}
+              {mood ? `Songs for ${mood}` : 'All songs'}
             </h2>
           </div>
           {songs.length > 0 && (
@@ -56,7 +88,7 @@ const Home = () => {
         ) : mood ? (
           <p className="song-list__message">No songs found for this mood yet.</p>
         ) : (
-          <p className="song-list__message">Detect your expression to find matching songs.</p>
+          <p className="song-list__message">No songs available yet.</p>
         )}
       </section>
       <Player />
