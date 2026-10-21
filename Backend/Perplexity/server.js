@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import app from './src/app.js';
 import { connectDatabase } from './src/config/database.js';
+import { testAi } from './src/services/ai.service.js';
 
 const port = Number(process.env.PORT ?? 3000);
 
@@ -14,3 +15,5 @@ try {
   console.error('Failed to start server:', error);
   process.exitCode = 1;
 }
+
+testAi();
