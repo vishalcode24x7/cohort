@@ -11,19 +11,19 @@ const Register = () => {
   };
 
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-zinc-950 px-4 py-12 text-zinc-100">
+    <main className="relative flex min-h-screen min-h-[100dvh] items-center justify-center overflow-hidden bg-zinc-950 px-3 py-6 text-zinc-100 sm:px-4 sm:py-12">
       <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-red-700/20 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-40 -right-24 h-96 w-96 rounded-full bg-rose-600/15 blur-3xl" />
 
-      <section className="relative w-full max-w-md rounded-3xl border border-white/10 bg-zinc-900/80 p-8 shadow-2xl shadow-red-950/30 backdrop-blur-xl sm:p-10">
-        <div className="mb-8">
-          <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-red-500 to-rose-700 text-lg font-bold shadow-lg shadow-red-950/50">
+      <section className="relative w-full max-w-md rounded-2xl border border-white/10 bg-zinc-900/80 p-5 shadow-2xl shadow-red-950/30 backdrop-blur-xl sm:rounded-3xl sm:p-8 md:p-10">
+        <div className="mb-6 sm:mb-8">
+          <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-red-500 to-rose-700 text-lg font-bold shadow-lg shadow-red-950/50 sm:mb-8">
             P
           </div>
           <p className="mb-2 text-sm font-medium uppercase tracking-[0.2em] text-red-400">
             Get started
           </p>
-          <h1 className="text-3xl font-semibold tracking-tight text-white">
+          <h1 className="text-2xl font-semibold leading-tight tracking-tight text-white sm:text-3xl">
             Create your account
           </h1>
           <p className="mt-3 text-sm leading-6 text-zinc-400">
@@ -31,7 +31,7 @@ const Register = () => {
           </p>
         </div>
 
-        <form className="space-y-5" onSubmit={handleSubmit}>
+        <form className="space-y-4 sm:space-y-5" onSubmit={handleSubmit}>
           <div>
             <label
               className="mb-2 block text-sm font-medium text-zinc-200"
@@ -101,7 +101,7 @@ const Register = () => {
           </button>
         </form>
 
-        <p className="mt-8 text-center text-sm text-zinc-400">
+        <p className="mt-6 text-center text-sm text-zinc-400 sm:mt-8">
           Already have an account?{" "}
           <Link
             className="font-semibold text-rose-400 transition hover:text-rose-300"
