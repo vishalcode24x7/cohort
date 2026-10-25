@@ -1,18 +1,31 @@
 import { useState } from "react";
-import { Link, Navigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useAuth } from "../hook/useAuth";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {handleLogin } = useAuth()
+
+  const user = useSelector(state => state.auth.user)
+  const loading = useSelector(state => state.auth.loading)
+
+  const { handleLogin } = useAuth()
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    await handleLogin(email, password)
-    Navigate("/")
+    await handleLogin({ email, password });
+    navigate("/");
   };
+
+  if (!loading && user) {
+    return <Navigate to={'/'} replace />
+  }
 
   return (
     <main className="relative flex min-h-screen min-h-[100dvh] items-center justify-center overflow-hidden bg-zinc-950 px-3 py-6 text-zinc-100 sm:px-4 sm:py-12">
@@ -36,7 +49,7 @@ const Login = () => {
         </div>
 
         <form className="space-y-4 sm:space-y-5" onSubmit={handleSubmit}>
-            
+
           <div>
             <label
               className="mb-2 block text-sm font-medium text-zinc-200"
