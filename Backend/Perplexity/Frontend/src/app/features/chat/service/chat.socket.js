@@ -5,7 +5,7 @@ export const initializeSocketConnection = () => {
         withCredentials: true,
     })
 
-    socket.on("connet", () => {
+    socket.on("connect", () => {
         console.log("Connected to Socket.IO server");
         
     })
