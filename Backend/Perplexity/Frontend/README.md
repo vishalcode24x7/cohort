@@ -1,5 +1,17 @@
 # React + Vite
 
+## Render deployment
+
+For a separate Render Static Site and Web Service, set `VITE_API_URL` on the
+frontend Static Site to the backend Web Service's public origin, for example
+`https://your-backend.onrender.com` (no trailing slash), then redeploy the
+frontend so the value is included in its build.
+
+On the backend Web Service, set `CORS_ORIGINS` to the exact frontend origin,
+for example `https://aiassistance-hq86.onrender.com`, and set
+`NODE_ENV=production`. Multiple frontend origins can be comma-separated.
+The backend uses this allowlist for both API requests and Socket.IO.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

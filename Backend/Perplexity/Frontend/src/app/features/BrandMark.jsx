@@ -1,6 +1,6 @@
 const BrandMark = ({ className = '' }) => (
   <img
-    src='https://ik.imagekit.io/vishallx/brand-logo.svg'
+    src='/brand-logo.svg'
     alt=''
     aria-hidden='true'
     className={className}

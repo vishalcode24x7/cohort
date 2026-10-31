@@ -1,19 +1,20 @@
 
 import { Server } from "socket.io"
+import { corsOrigin } from "../config/cors.js"
 
 let io;
 
 export function initSocket(httpServer) {
     io = new Server(httpServer, {
         cors: {
-            origin: "http://localhost:5173",
+            origin: corsOrigin,
             credentials: true,
         }
     })
 
     console.log("Socket io server is running");
     
-    io.on("connetion", (socket) => {
+    io.on("connection", (socket) => {
         console.log("A user connected : " + socket.id);
 
     })
