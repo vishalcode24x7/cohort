@@ -7,21 +7,27 @@ import { useChat } from '../hooks/useChat.js'
 import BrandMark from '../../BrandMark.jsx'
 
 const promptSuggestions = [
-  'Explain a complex idea simply',
-  'Help me write something great',
-  'Give me a fresh perspective',
+  // 'Explain a complex idea simply',
+  // 'Help me write something great',
+  // 'Give me a fresh perspective',
 ]
 
 const Dashboard = () => {
   const chat = useChat()
   const dispatch = useDispatch()
   const [chatInput, setChatInput] = useState('')
+  const [pendingMessage, setPendingMessage] = useState(null)
   const [isMobileHistoryOpen, setIsMobileHistoryOpen] = useState(false)
   const user = useSelector((state) => state.auth.user)
   const chats = useSelector((state) => state.chat.chats)
   const currentChatId = useSelector((state) => state.chat.currentChatId)
+  const isSending = useSelector((state) => state.chat.isSending)
+  const chatError = useSelector((state) => state.chat.error)
   const currentChat = chats[currentChatId]
   const messages = currentChat?.messages ?? []
+  const displayedMessages = pendingMessage
+    ? [...messages, { role: 'user', content: pendingMessage, id: 'pending' }]
+    : messages
   const userName = user?.username || user?.email || 'Account'
   const userInitial = userName.charAt(0).toUpperCase()
 
@@ -30,16 +36,21 @@ const Dashboard = () => {
     chat.handleGetChats()
   }, [])
 
-  const handleSubmitMessage = (event) => {
+  const handleSubmitMessage = async (event) => {
     event.preventDefault()
 
     const trimmedMessage = chatInput.trim()
-    if (!trimmedMessage) {
+    if (!trimmedMessage || isSending) {
       return
     }
 
-    chat.handleSendMessage({ message: trimmedMessage, chatId: currentChatId })
+    setPendingMessage(trimmedMessage)
     setChatInput('')
+    try {
+      await chat.handleSendMessage({ message: trimmedMessage, chatId: currentChatId })
+    } finally {
+      setPendingMessage(null)
+    }
   }
 
   const openChat = (chatId) => {
@@ -178,8 +189,8 @@ const Dashboard = () => {
                     type='button'
                     title={savedChat.title}
                     className={`w-full truncate rounded-xl px-3 py-3 text-left text-sm transition ${savedChat.id === currentChatId
-                        ? 'border border-violet-500/20 bg-violet-500/10 text-violet-100'
-                        : 'border border-transparent text-zinc-400 hover:bg-white/[0.05] hover:text-zinc-100'
+                      ? 'border border-violet-500/20 bg-violet-500/10 text-violet-100'
+                      : 'border border-transparent text-zinc-400 hover:bg-white/[0.05] hover:text-zinc-100'
                       }`}
                   >
                     {savedChat.title}
@@ -208,7 +219,7 @@ const Dashboard = () => {
         <header className='flex h-[68px] shrink-0 items-center justify-between gap-2 border-b border-white/[0.07] px-3 sm:h-[72px] sm:px-7'>
           <div className='flex min-w-0 items-center gap-2 sm:gap-3'>
             <div className='flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-purple-700 text-sm font-bold md:hidden'>
-              <BrandMark className='h-[22px] w-[22px] text-white' />
+              <BrandMark className='h-8 w-8 text-white' />
             </div>
             <div className='min-w-0'>
               <p className='truncate text-sm font-medium text-zinc-200'>
@@ -241,7 +252,7 @@ const Dashboard = () => {
 
         <div className='mx-auto flex min-h-0 w-full max-w-4xl flex-1 flex-col px-3 sm:px-7'>
           <div className='chat-scroll-area min-h-0 flex-1 overflow-y-auto overscroll-contain py-5 sm:py-10'>
-            {messages.length === 0 ? (
+            {displayedMessages.length === 0 && !isSending ? (
               <div className='flex min-h-[min(58vh,600px)] flex-col items-center justify-center py-8 text-center sm:min-h-[min(62vh,600px)] sm:py-10'>
                 <div className='mb-5 flex h-14 w-14 items-center justify-center rounded-[20px] border border-violet-400/20 bg-gradient-to-br from-violet-600/20 to-purple-300/20 text-2xl font-bold text-violet-300 shadow-[0_12px_60px_rgba(88,28,135,0.18)] sm:mb-6 sm:h-16 sm:w-16 sm:rounded-[22px]'>
                   <BrandMark className='h-13 w-13' />
@@ -271,7 +282,7 @@ const Dashboard = () => {
               </div>
             ) : (
               <div className='space-y-8 pb-8'>
-                {messages.map((message, index) => (
+                {displayedMessages.map((message, index) => (
                   <div
                     key={message.id ?? `${message.role}-${index}`}
                     className={`flex gap-2 sm:gap-4 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
@@ -315,6 +326,17 @@ const Dashboard = () => {
                     )}
                   </div>
                 ))}
+                {isSending && (
+                  <div className='flex gap-2 sm:gap-4' role='status' aria-live='polite'>
+                    <div className='mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-purple-700 text-xs font-bold text-white'>
+                      <BrandMark className='h-7 w-7' />
+                    </div>
+                    <div className='flex items-center gap-3 pt-1 text-sm text-zinc-400'>
+                      <span className='h-4 w-4 animate-spin rounded-full border-2 border-violet-400 border-t-transparent' aria-hidden='true' />
+                      <span>Thinking...</span>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -343,7 +365,7 @@ const Dashboard = () => {
                 <span className='text-[11px] text-zinc-600'>Shift + Enter for a new line</span>
                 <button
                   type='submit'
-                  disabled={!chatInput.trim()}
+                  disabled={!chatInput.trim() || isSending}
                   aria-label='Send message'
                   className='flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-purple-700 text-lg text-white shadow-md shadow-purple-950/40 transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-35'
                 >
