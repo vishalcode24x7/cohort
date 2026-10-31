@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { useAuth } from "../hook/useAuth";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router";
+import BrandMark from "../../BrandMark.jsx";
 
 
 const Login = () => {
@@ -28,16 +29,16 @@ const Login = () => {
   }
 
   return (
-    <main className="relative flex min-h-screen min-h-[100dvh] items-center justify-center overflow-hidden bg-zinc-950 px-3 py-6 text-zinc-100 sm:px-4 sm:py-12">
-      <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-red-700/20 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-40 -right-24 h-96 w-96 rounded-full bg-rose-600/15 blur-3xl" />
+    <main className="relative flex min-h-screen min-h-[100dvh] items-center justify-center overflow-x-hidden overflow-y-auto bg-zinc-950 px-3 py-6 text-zinc-100 sm:px-4 sm:py-12">
+      <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-violet-700/20 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-40 -right-24 h-96 w-96 rounded-full bg-purple-600/15 blur-3xl" />
 
-      <section className="relative w-full max-w-md rounded-2xl border border-white/10 bg-zinc-900/80 p-5 shadow-2xl shadow-red-950/30 backdrop-blur-xl sm:rounded-3xl sm:p-8 md:p-10">
+      <section className="relative w-full max-w-md rounded-2xl border border-white/10 bg-zinc-900/80 p-5 shadow-2xl shadow-purple-950/30 backdrop-blur-xl sm:rounded-3xl sm:p-8 md:p-10">
         <div className="mb-6 sm:mb-8">
-          <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-red-500 to-rose-700 text-lg font-bold shadow-lg shadow-red-950/50 sm:mb-8">
-            P
+          <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-purple-700 text-lg font-bold shadow-lg shadow-purple-950/50 sm:mb-8">
+            <BrandMark className="h-11 w-11 text-white" />
           </div>
-          <p className="mb-2 text-sm font-medium uppercase tracking-[0.2em] text-red-400">
+          <p className="mb-2 text-sm font-medium uppercase tracking-[0.2em] text-violet-400">
             Welcome back
           </p>
           <h1 className="text-2xl font-semibold leading-tight tracking-tight text-white sm:text-3xl">
@@ -59,7 +60,7 @@ const Login = () => {
             </label>
             <input
               autoComplete="email"
-              className="w-full rounded-xl border border-zinc-700 bg-zinc-950/70 px-4 py-3 text-white outline-none transition placeholder:text-zinc-600 focus:border-red-500 focus:ring-4 focus:ring-red-500/10"
+              className="w-full rounded-xl border border-zinc-700 bg-zinc-950/70 px-4 py-3 text-white outline-none transition placeholder:text-zinc-600 focus:border-violet-500 focus:ring-4 focus:ring-violet-500/10"
               id="login-email"
               name="email"
               onChange={(event) => setEmail(event.target.value)}
@@ -79,7 +80,7 @@ const Login = () => {
             </label>
             <input
               autoComplete="current-password"
-              className="w-full rounded-xl border border-zinc-700 bg-zinc-950/70 px-4 py-3 text-white outline-none transition placeholder:text-zinc-600 focus:border-red-500 focus:ring-4 focus:ring-red-500/10"
+              className="w-full rounded-xl border border-zinc-700 bg-zinc-950/70 px-4 py-3 text-white outline-none transition placeholder:text-zinc-600 focus:border-violet-500 focus:ring-4 focus:ring-violet-500/10"
               id="login-password"
               name="password"
               onChange={(event) => setPassword(event.target.value)}
@@ -91,7 +92,7 @@ const Login = () => {
           </div>
 
           <button
-            className="w-full rounded-xl bg-gradient-to-r from-red-600 to-rose-600 px-4 py-3 font-semibold text-white shadow-lg shadow-red-950/40 transition hover:from-red-500 hover:to-rose-500 focus:outline-none focus:ring-4 focus:ring-red-500/30"
+            className="w-full rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 px-4 py-3 font-semibold text-white shadow-lg shadow-purple-950/40 transition hover:from-violet-500 hover:to-purple-500 focus:outline-none focus:ring-4 focus:ring-violet-500/30"
             type="submit"
           >
             Sign in
@@ -102,7 +103,7 @@ const Login = () => {
         <p className="mt-6 text-center text-sm text-zinc-400 sm:mt-8">
           New here?{" "}
           <Link
-            className="font-semibold text-rose-400 transition hover:text-rose-300"
+            className="font-semibold text-violet-400 transition hover:text-violet-300"
             to="/register"
           >
             Create an account
