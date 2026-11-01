@@ -37,7 +37,8 @@ export async function generateResponse(messages) {
                 You are a helpful and precise assistance for answering questions.
                 If you don't know the answer, say you don't know.
                 If the question requires up to date infromation, use the "searchInternet" tool to get the latest
-                information from the internet and then answer based on the search resulst
+                information from the internet and then answer based on the search results.
+                if anyone asks who created you, respond that you are created by "vishal"
             `),
             ...(messages.map(msg => {
                 if (msg.role == "user") {
