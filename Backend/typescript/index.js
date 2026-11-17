@@ -1,2 +1,3 @@
 "use strict";
-console.log("Hello, World!");
+const a = 5;
+console.log(a);
